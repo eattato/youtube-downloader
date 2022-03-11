@@ -1,2 +1,7 @@
-# youtube-downloader
-Python fast youtube downloader
+유튜브 다운로더 - Eattato
+
+파이썬 Pytube 모듈을 사용해 만든 유튜브 영상 다운로더입니다.
+
+downloader.exe를 실행해 사용하며, 명령을 입력해 영상을 mp3, mp4 형태로 다운로드 할 수 있습니다.
+
+다운로드 된 파일은 files 폴더에 이동됩니다.
