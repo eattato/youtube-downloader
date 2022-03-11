@@ -20,10 +20,10 @@ while True:
                     print("{} 영상을 다운로드 하는 중..".format(vid.title))
                     if downloadSetting == "mp4":
                         vids = vid.streams.filter(
-                            progressive=True, file_extension=downloadSetting).order_by("resolution")  # gets mp4 sources and order by resolution
+                            progressive=True, file_extension="mp4").order_by("resolution")  # gets mp4 sources and order by resolution
                     elif downloadSetting == "mp3":
                         vids = vid.streams.filter(
-                            only_audio=True).order_by("abr")  # gets sound sources and order by abr(sound quality)
+                            only_audio=True, file_extension="mp4").order_by("abr")  # gets sound sources and order by abr(sound quality)
                     if len(vids) >= 1:
                         # download finest quality
                         foundVid = False
