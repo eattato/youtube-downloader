@@ -29,7 +29,11 @@ while True:
                         foundVid = False
                         if getSetting[downloadSetting] == "best":
                             foundVid = True
-                            vids[-1].download(".\\files")
+                            downloaded = vids[-1].download(".\\files")
+                            if downloadSetting == "mp3":
+                                name, ext = os.path.splitext(downloaded)
+                                # rename mp4 audio to mp3
+                                os.rename(downloaded, name + ".mp3")
                         else:
                             for vid in vids:
                                 if downloadSetting == "mp4":
@@ -39,7 +43,12 @@ while True:
                                     if vid.abr == getSetting[downloadSetting]:
                                         foundVid = True
                                 if foundVid == True:
-                                    vid.download(".\\files")
+                                    downloaded = vid.download(".\\files")
+                                    if downloadSetting == "mp3":
+                                        name, ext = os.path.splitext(
+                                            downloaded)
+                                        # rename mp4 audio to mp3
+                                        os.rename(downloaded, name + ".mp3")
                                     break
                         if foundVid == True:
                             print("{} 영상을 다운로드 하였습니다. 남은 대기열 {}".format(
