@@ -1,7 +1,6 @@
 import os
 import pytube
 from pytube import YouTube
-print(pytube.__version__)
 
 downloadSetting = "mp4"  # downloading type
 getSetting = {
