@@ -1,6 +1,7 @@
 import os
 import pytube
 from pytube import YouTube
+from moviepy.editor import *
 
 downloadSetting = "mp4"  # downloading type
 getSetting = {
@@ -30,10 +31,12 @@ while True:
                         if getSetting[downloadSetting] == "best":
                             foundVid = True
                             downloaded = vids[-1].download(".\\files")
-                            if downloadSetting == "mp3":
+                            if downloadSetting == "mp3":  # convert mp4 to mp3
                                 name, ext = os.path.splitext(downloaded)
-                                # rename mp4 audio to mp3
-                                os.rename(downloaded, name + ".mp3")
+                                audio = AudioFileClip(downloaded)
+                                audio.write_audiofile(
+                                    name + ".mp3", verbose=False, logger=None)
+                                os.remove(downloaded)
                         else:
                             for vid in vids:
                                 if downloadSetting == "mp4":
@@ -44,11 +47,13 @@ while True:
                                         foundVid = True
                                 if foundVid == True:
                                     downloaded = vid.download(".\\files")
-                                    if downloadSetting == "mp3":
+                                    if downloadSetting == "mp3":  # convert mp4 to mp3
                                         name, ext = os.path.splitext(
                                             downloaded)
-                                        # rename mp4 audio to mp3
-                                        os.rename(downloaded, name + ".mp3")
+                                        audio = AudioFileClip(downloaded)
+                                        audio.write_audiofile(
+                                            name + ".mp3", verbose=False, logger=None)
+                                        os.remove(downloaded)
                                     break
                         if foundVid == True:
                             print("{} 영상을 다운로드 하였습니다. 남은 대기열 {}".format(
