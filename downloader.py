@@ -54,6 +54,7 @@ while True:
                     print(error)
                     print("{} 영상을 다운로드 하지 못했습니다.".format(
                         vid.title))
+            downloadList = []  # reset download list after download
             print("다운로드를 완료했습니다.")
         elif command[0] == "help":
             print("download\t다운로드 목록을 모두 현재 설정으로 다운로드합니다.")
