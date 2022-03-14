@@ -1,6 +1,5 @@
-from ast import arg
-from concurrent.futures import thread
 import os
+from click import progressbar
 from pytube import *
 from moviepy.editor import *
 import threading
@@ -86,7 +85,9 @@ def downloadVideo(vid, ind):
                     vidAudio = AudioFileClip(os.path.join(
                         os.path.abspath(".\\files"), vidFullName))
                     vidAudio.write_audiofile(os.path.join(
-                        os.path.abspath(".\\files"), vidName) + ".mp3", verbos=False, logger=None)
+                        os.path.abspath(".\\files"), vidName) + ".mp3", logger=None)
+                    os.remove(os.path.join(
+                        os.path.abspath(".\\files"), vidFullName))
                 print("{} 영상을 다운로드 하였습니다. 남은 대기열 {}".format(
                     vid.title, len(downloadList) - ind - 1))
             else:
@@ -151,7 +152,6 @@ while True:
                 threads = []
                 for count in range(videoCounts):
                     if coadd == True:  # fast add
-                        print("co adding")
                         t = threading.Thread(
                             target=addVideo, args=(playlist, count))
                         t.start()
