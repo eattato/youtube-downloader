@@ -1,5 +1,4 @@
 import os
-from click import progressbar
 from pytube import *
 from moviepy.editor import *
 import threading
